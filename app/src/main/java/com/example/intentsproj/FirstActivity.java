@@ -9,6 +9,7 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -39,13 +40,19 @@ public class FirstActivity extends AppCompatActivity {
         ctoast.show();
 
 
-        Intent intent =  new Intent(this , SecondActivity.class);
-        EditText editText=(EditText) findViewById(R.id.txtNo1);
-        String number1= editText.getText().toString();
-        editText=(EditText) findViewById((R.id.txtNo2));
-        String number2=editText.getText().toString();
-        intent.putExtra("N1",number1);
-        intent.putExtra("N2",number2);
-        startActivity(intent);
+        Button btn=findViewById(R.id.btnOK);
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent =  new Intent(FirstActivity.this  , SecondActivity.class);
+                EditText editText=(EditText) findViewById(R.id.txtNo1);
+                String number1= editText.getText().toString();
+                editText=(EditText) findViewById((R.id.txtNo2));
+                String number2=editText.getText().toString();
+                intent.putExtra("N1",number1);
+                intent.putExtra("N2",number2);
+                startActivity(intent);
+            }
+        });
     }
 }
